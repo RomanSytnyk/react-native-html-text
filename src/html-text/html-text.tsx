@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextProps, Linking, Text } from 'react-native';
+import { TextProps, Linking, Text, TextStyle } from 'react-native';
 import { parse, NodeType } from 'node-html-parser';
 import { decode } from 'he';
 import { toRN } from '../helpers/transform';
@@ -142,14 +142,18 @@ const mapStyles = (baseFontSize: number, styles: any[]): any => {
     if (style) {
       for (const key of Object.keys(style)) {
         let value = style[key];
-        if (
-          /^(\-|\+)?([0-9]+(\.[0-9]+)?)em$/.test(String(value)) ||
-          /^(\-|\+)?([0-9]+(\.[0-9]+)?)pt$/.test(String(value))
-        ) {
-          // Handle "em" and "pt" values
+        if (/^(\-|\+)?([0-9]+(\.[0-9]+)?)em$/.test(String(value))) {
+          // Handle "em" values
           const size = parseFloat(value);
           value = size * baseFontSize;
         }
+
+        if (/^(\-|\+)?([0-9]+(\.[0-9]+)?)pt$/.test(String(value))) {
+          // Handle "pt" values
+          const size = parseFloat(value);
+          value = size;
+        }
+
         result[key] = value;
       }
     }
@@ -169,6 +173,7 @@ const mapStyles = (baseFontSize: number, styles: any[]): any => {
 
 type HtmlTextProps = {
   children: string;
+  style?: TextStyle;
 } & TextProps;
 
 type HtmlTextFormattedProps = {
@@ -194,7 +199,7 @@ class HtmlTextFormatter extends React.PureComponent<HtmlTextFormattedProps> {
           const href = childNode.getAttribute('href');
           Linking.canOpenURL(href).then(() => {
             customProps.onPress = () => Linking.openURL(href);
-          });  
+          });
         }
 
         const { style, fontSize } = mapStyles(baseFontSize, [
@@ -231,7 +236,7 @@ class HtmlTextFormatter extends React.PureComponent<HtmlTextFormattedProps> {
     const root = parse(content, { pre: true });
 
     return (
-      <Text {...forwardedProps} ref={forwardedRef}>
+      <Text {...forwardedProps} style={forwardedProps.style} ref={forwardedRef}>
         {this.renderChildren(root, 1)}
       </Text>
     );
