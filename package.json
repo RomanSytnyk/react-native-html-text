@@ -1,7 +1,7 @@
 {
-  "name": "@e-mine/react-native-html-text",
-  "version": "0.3.3",
-  "description": "Transform your HTML-formatted text into native styled Text elements.",
+  "name": "@roman.sytnyk/react-native-html-text",
+  "version": "0.3.4",
+  "description": "Transform your HTML-formatted text into native styled Text elements. Fork.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
@@ -34,13 +34,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/e-mine/react-native-html-text",
-  "author": "e-mine software <contato@e-mine.com.br> (https://e-mine.com.br/)",
+  "repository": "https://github.com/RomanSytnyk/react-native-html-text",
+  "author": "e-mine software <contato@e-mine.com.br> (https://e-mine.com.br/), Roman Sytnyk",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/e-mine/react-native-html-text/issues"
+    "url": "https://github.com/RomanSytnyk/react-native-html-text/issues"
   },
-  "homepage": "https://github.com/e-mine/react-native-html-text#readme",
+  "homepage": "https://github.com/RomanSytnyk/react-native-html-text#readme",
   "publishConfig": {
     "access": "public"
   },
@@ -62,11 +62,11 @@
     "jest": "^26.0.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "16.11.0",
-    "react-native": "^0.63.3",
+    "react": "16.13.1",
+    "react-native": "^0.63.5",
     "react-test-renderer": "16.13.1",
     "release-it": "^14.0.3",
-    "typescript": "^3.8.3"
+    "typescript": "^4.2.4"
   },
   "peerDependencies": {
     "react": "*",

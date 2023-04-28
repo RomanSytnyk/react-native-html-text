@@ -1,11 +1,13 @@
-# @e-mine/react-native-html-text
+# @roman.sytnyk/react-native-html-text
+
+Fork of @e-mine/react-native-html-text with some fixes
 
 Transform your simple HTML-formatted text into native (styled) Text elements. This plugin aims to be simple and effective, supporting basic text styling. If you need to render a complete page, this is not what you are searching for.
 
 ## Installation
 
 ```sh
-npm install @e-mine/react-native-html-text
+npm install @roman.sytnyk/react-native-html-text
 ```
 
 ## Usage
@@ -15,7 +17,7 @@ npm install @e-mine/react-native-html-text
 This is the main use case for this plugin: rendering a HTML-formatted text with basic styling support (bold, italic, line breaks, ...).
 
 ```js
-import { HtmlText } from "@e-mine/react-native-html-text";
+import { HtmlText } from "@roman.sytnyk/react-native-html-text";
 
 // ...
 
@@ -31,7 +33,7 @@ render() {
 A more advanced use case is when you need to insert custom styles for HTML tags. Then, you just insert a context provider with your customized styles. It will provide the customization for all HtmlText components in its hierarchy. This way you just need to customize it once near your root component.
 
 ```js
-import { HtmlText, HtmlTextContext, defaultContextValues } from "@e-mine/react-native-html-text";
+import { HtmlText, HtmlTextContext, defaultContextValues } from "@roman.sytnyk/react-native-html-text";
 
 // ...
 
