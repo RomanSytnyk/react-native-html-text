@@ -155,6 +155,15 @@ const mapStyles = (baseFontSize: number, styles: any[]): any => {
         }
 
         result[key] = value;
+
+        // Fix lineHeight problem with text
+        if (
+          key === 'fontSize' &&
+          value > 23 &&
+          !Object.keys(style).includes('lineHeight')
+        ) {
+          result['lineHeight'] = value + 4;
+        }
       }
     }
     return result;
