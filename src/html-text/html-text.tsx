@@ -162,7 +162,7 @@ const mapStyles = (baseFontSize: number, styles: any[]): any => {
           value > 23 &&
           !Object.keys(style).includes('lineHeight')
         ) {
-          result['lineHeight'] = value + 4;
+          result.lineHeight = value + 4;
         }
       }
     }
@@ -217,14 +217,31 @@ class HtmlTextFormatter extends React.PureComponent<HtmlTextFormattedProps> {
         ]);
         const content = this.renderChildren(childNode, index + 1, fontSize);
 
+        let prefix = '';
+        switch (childNode.parentNode?._tag_name) {
+          case 'ul':
+            // Bullet List
+            prefix = '• ';
+            break;
+          case 'ol':
+            // Numbered List
+            const indexNumber = childNode.parentNode?.childNodes
+              ?.filter((k: { _tag_name: string }) => k._tag_name === 'li')
+              ?.findIndex((k: any) => k === childNode);
+
+            prefix = isNaN(indexNumber) ? '- ' : `${indexNumber + 1}. `;
+            break;
+        }
+
         return [
           predefinition?.beforeContent,
           isValidStyle(style) ? (
             <Text {...customProps} key={index * nodeIndex} style={style}>
+              {prefix}
               {content}
             </Text>
           ) : (
-            content
+            `${prefix}${content}`
           ),
           predefinition?.afterContent,
         ];
