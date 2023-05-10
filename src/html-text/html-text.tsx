@@ -241,7 +241,10 @@ class HtmlTextFormatter extends React.PureComponent<HtmlTextFormattedProps> {
               {content}
             </Text>
           ) : (
-            `${prefix}${content}`
+            <>
+              {prefix}
+              {content}
+            </>
           ),
           predefinition?.afterContent,
         ];

@@ -1,6 +1,6 @@
 {
   "name": "@roman.sytnyk/react-native-html-text",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Transform your HTML-formatted text into native styled Text elements. Fork.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
